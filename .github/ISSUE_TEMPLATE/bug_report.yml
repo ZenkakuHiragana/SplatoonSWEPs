@@ -1,0 +1,77 @@
+name: Bug Report
+description: Fill out this form to report your bug.
+labels: "bug"
+projects: "ZenkakuHiragana/1"
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to test my SWEPs and report your bug!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Describe the bug
+      description: A clear and detailed description of what the bug is.
+      placeholder: |
+        Leave a comment
+        Doing something unusual spouts a script error.  The error messages are in the "Relevant console log" section.
+        (More explanation here)
+        I took a video/screenshot to show exactly what happens as follows:  
+        (Screeshots, video links or embedded videos here)
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: A step-by-step explanation to cause the issue on my end.
+      value: Leave a comment
+      placeholder: |
+        Leave a comment
+        1. Start a singleplayer map as sandbox (I tested on gm_construct, but it seems happening on other maps)
+        2. Equip Splatsoaker
+        3. Stick to the wall and shoot the weapon at the wall
+        4. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant console log or piece of Lua code to reproduce
+      description: Paste any relevant log output or Lua scripts to make the issue, if any.  This will be automatically formatted into code, so no need for backticks.
+      render: shell
+      placeholder: |
+        [splashsweps-master] addons/splashsweps-master/lua/splashsweps/server/lightmap.lua:195: attempt to index field '_lighthdr' (a nil value)
+          1. BuildLightmap - addons/splashsweps-master/lua/splashsweps/server/lightmap.lua:195
+           2. v - addons/splashsweps-master/lua/splashsweps/server/autorun.lua:188
+            3. unknown - lua/includes/modules/hook.lua:96
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: If any, expected behavior or behavior seen in the original game may be explained here.
+      value: Leave a comment
+      placeholder: |
+        Leave a comment
+        Example1: Doing such things will cause no errors.
+        Example2: Recorded a video doing the same thing in Spaltoon 2.
+  - type: dropdown
+    id: branch
+    attributes:
+      label: Branch
+      description: The Garry's Mod branch you are using.  If not sure, probably you're using the default branch.
+      multiple: true
+      options:
+        - None - The Default Branch
+        - dev - Development Branch
+        - prerelease - Pre-Release Branch
+        - x86-64 - CHromium + 64-bit binaries
+      default: 0
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      description: Operating system you're using.  Probably most people use Windows, I guess.
+      options:
+        - Windows
+        - macOS
+        - Linux

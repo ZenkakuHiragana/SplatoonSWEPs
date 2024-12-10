@@ -1,0 +1,29 @@
+name: Upload to Dropbox
+on:
+  push:
+    branches: master
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive
+        run: git archive HEAD --prefix=splashsweps-master/ --output=splashsweps.zip
+      - name: Upload zip
+        run: >
+          curl -X POST https://content.dropboxapi.com/2/files/upload
+          --data-binary @splashsweps.zip
+          --header "Content-Type: application/octet-stream"
+          --header "Authorization: Bearer $(
+          curl -s https://api.dropbox.com/oauth2/token
+          -d grant_type=refresh_token
+          -d refresh_token=${{ secrets.DROPBOX_REFRESH_TOKEN }}
+          -d client_id=${{ secrets.DROPBOX_CLIENT_KEY }}
+          -d client_secret=${{ secrets.DROPBOX_CLIENT_SECRET }} | jq -r .access_token)"
+          --header 'Dropbox-API-Arg: {
+          "path": "/splashsweps.zip",
+          "mode": "overwrite",
+          "autorename": false,
+          "mute": false,
+          "strict_conflict": false }'

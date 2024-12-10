@@ -1,0 +1,29 @@
+#############
+## Windows detritus
+#############
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+# Executables and other
+*.dll
+*.exe
+*.ico
+*.zip
+*.lnk
+
+# Debug scripts for GMOD
+lua/do.lua
+
+# Don't sync VSCode configurations
+.vscode

@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+    "$basetexture" "entities/weapon_splashsweps_splatsoaker"
+    "$nolod" 1
+    "$vertexalpha" 1
+    "$vertexcolor" 1
+}
